@@ -14,9 +14,11 @@ import androidx.compose.ui.res.painterResource
 import com.edulearn.app.models.CourseViewModel
 import com.edulearn.app.models.Courses
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.ui.Alignment
@@ -25,28 +27,62 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.edulearn.app.R
+import com.edulearn.app.utility.TopBar
 
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(courseViewModel: CourseViewModel){
     var courseList = courseViewModel.getCourses()
-    Scaffold{
+    Scaffold(topBar = {
+        TopBar("edu learn")
+    }){
         Column (Modifier.padding(it)){
-            Text(
-                text ="Programming Courses",
-                maxLines = 1,
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(8.dp)
-            )
-            Box() {
-                LazyHorizontalGrid(
-                    rows = GridCells.Fixed(1),
-
+            Box(Modifier.weight(.2f)) {
+                Column {
+                    Text(
+                        text = "Programming Courses",
+                        maxLines = 1,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(8.dp)
+                    )
+                    Box(
+                        Modifier,
+                        contentAlignment = Alignment.Center,
                     ) {
-                    items(courseList.size) {
-                        CourseCard(courseList[it])
+                        LazyHorizontalGrid(
+                            rows = GridCells.Fixed(1),
+
+                            ) {
+                            items(courseList.size) {
+                                CourseCard(courseList[it])
+                            }
+                        }
+                    }
+                }
+            }
+
+            Spacer(Modifier.height(16.dp))
+
+            Box (Modifier.weight(.2f)){
+                Column {
+                    Text(
+                        text = "Other Courses",
+                        maxLines = 1,
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(8.dp)
+                    )
+                    Box() {
+                        LazyHorizontalGrid(
+                            rows = GridCells.Fixed(1),
+
+                            ) {
+                            items(courseList.size) {
+                                CourseCard(courseList[it])
+                            }
+                        }
                     }
                 }
             }
@@ -56,8 +92,7 @@ fun HomeScreen(courseViewModel: CourseViewModel){
 
 @Composable
 fun CourseCard(courses: Courses){
-    Box(Modifier.padding(16.dp).fillMaxSize()){
-
+    Box(Modifier.padding(16.dp)){
         Card() {
             Column(Modifier.align(Alignment.CenterHorizontally)) {
                Image(painter = painterResource(R.drawable.edulearn_logo), contentDescription = null,
