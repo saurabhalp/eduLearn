@@ -16,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.edulearn.app.models.AuthViewModel
+import com.edulearn.app.screens.AuthScreen
 import com.edulearn.app.screens.SplashScreen
 import com.edulearn.app.ui.theme.EduLearnTheme
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -47,7 +48,16 @@ class MainActivity : ComponentActivity() {
                 NavHost(navController = navController, startDestination = "splash") {
                     composable(
                         "splash",
-                    ){ SplashScreen { {} } }
+                    ){ SplashScreen {
+                        navController.navigate("auth")
+                     } }
+                    composable("auth"){
+                        AuthScreen(
+                            googleSignInClient = googleSignInClient,
+                            onAuthSuccess = {},
+                            viewModel = authViewModel
+                        )
+                    }
                 }
 
             }

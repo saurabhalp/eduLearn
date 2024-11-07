@@ -44,7 +44,7 @@ fun SplashScreen(onTimeout:() -> Unit) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFF749CB3)) // Vibrant background color
+                .background(Color(0xFFFFA726)) // Vibrant background color
                 .padding(16.dp),
             contentAlignment = Alignment.Center
         ) {
@@ -52,26 +52,24 @@ fun SplashScreen(onTimeout:() -> Unit) {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                Image(
-                    painter = painterResource(R.drawable.edulearn_logo), // Replace with your logo resource
-                    contentDescription = "Logo",
-                    contentScale = ContentScale.Fit,
-                    modifier = Modifier
-                        .size(150.dp)
-                        .clip(CircleShape)
+                Text(
+                    text = "Edu Learn",
+                    fontSize = 72.sp,
+                    color = Color(0xFFFF5722),
+                    fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
-                    text = "Get Your Course",
-                    fontSize = 30.sp,
+                    text = "Get the course, You Like...",
+                    fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White,
                     textAlign = TextAlign.Center
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(24.dp))
                 CircularProgressIndicator(
                     color = Color.White,
-                    modifier = Modifier.size(50.dp)
+                    modifier = Modifier.size(40.dp)
                 )
             }
         }
