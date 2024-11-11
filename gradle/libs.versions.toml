@@ -11,13 +11,15 @@ lifecycleRuntimeKtx = "2.8.4"
 activityCompose = "1.9.2"
 composeBom = "2024.04.01"
 googleGmsGoogleServices = "4.4.2"
-firebaseAuth = "23.0.0"
+
+firebaseAuth = "23.1.0"
 firebaseDatabase = "21.0.0"
 firebaseMessaging = "24.0.2"
 firebaseStorage = "21.0.1"
 lifecycleViewmodel = "2.8.7"
 navigationCompose = "2.8.3"
 playServicesAuth = "21.2.0"
+
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -40,9 +42,11 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
+
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
 firebase-storage = { group = "com.google.firebase", name = "firebase-storage", version.ref = "firebaseStorage" }
 play-services-auth = { module = "com.google.android.gms:play-services-auth", version.ref = "playServicesAuth" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

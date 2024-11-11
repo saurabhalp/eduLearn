@@ -7,7 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.edulearn.app.models.AuthViewModel
+import com.edulearn.app.models.CourseViewModel
 import com.edulearn.app.screens.AuthScreen
+import com.edulearn.app.screens.HomeScreen
 import com.edulearn.app.screens.SplashScreen
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -31,22 +33,32 @@ class MainActivity : ComponentActivity() {
 }
 
 
-            @Composable
-            fun MyApp(googleSignInClient: GoogleSignInClient, authViewModel: AuthViewModel) {
+@Composable
+fun MyApp(googleSignInClient: GoogleSignInClient, authViewModel: AuthViewModel) {
                 val navController = rememberNavController()
+                val courseViewModel = CourseViewModel()
 
                 NavHost(navController = navController, startDestination = "splash") {
                     composable(
                         "splash",
-                    ){ SplashScreen {
-                        navController.navigate("auth")
-                     } }
+                    ) {
+                        SplashScreen {
+                            if (authViewModel.getCurrentUser() == null) {
+                                navController.navigate("auth")
+                            } else {
+                                navController.navigate("home")
+                            }
+                        }
+                    }
                     composable("auth"){
                         AuthScreen(
                             googleSignInClient = googleSignInClient,
-                            onAuthSuccess = {},
+                            onAuthSuccess = {navController.navigate("home")},
                             viewModel = authViewModel
                         )
+                    }
+                    composable("home"){
+                        HomeScreen(courseViewModel)
                     }
                 }
 
