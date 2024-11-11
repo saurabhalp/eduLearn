@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.google.gms.google.services)
+
 }
 
 buildscript {
@@ -13,6 +14,7 @@ buildscript {
         val nav_version = "2.8.3"
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
     }
+
 }
 
 android {
@@ -72,6 +74,10 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
+
+    implementation(libs.firebase.messaging)
+    implementation(libs.firebase.storage)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -79,13 +85,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-    val lifecycle_version = "2.8.7"
-    // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version")
-
-    implementation ("com.google.android.gms:play-services-auth:20.3.0")
-    implementation ("androidx.navigation:navigation-compose:2.8.3")
-    implementation ("com.google.firebase:firebase-auth:21.1.0")
-    implementation ("com.google.firebase:firebase-bom:30.2.0")
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation (libs.play.services.auth)
+    implementation (libs.androidx.navigation.compose)
+    implementation (libs.firebase.auth.v2110)
+    implementation (platform(libs.firebase.bom))
 }

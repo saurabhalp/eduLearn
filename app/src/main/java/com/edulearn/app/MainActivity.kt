@@ -11,7 +11,6 @@ import com.edulearn.app.models.CourseViewModel
 import com.edulearn.app.screens.AuthScreen
 import com.edulearn.app.screens.HomeScreen
 import com.edulearn.app.screens.SplashScreen
-import com.edulearn.app.ui.theme.EduLearnTheme
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
