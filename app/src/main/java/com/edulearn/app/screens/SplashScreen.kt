@@ -35,7 +35,7 @@ import kotlinx.coroutines.delay
 fun SplashScreen(onTimeout:() -> Unit) {
     var isLoading = remember { mutableStateOf(true) }
     LaunchedEffect(Unit) {
-        delay(2500) // 3 seconds delay for splash screen
+        delay(500)
         isLoading.value = false
         onTimeout()
     }
